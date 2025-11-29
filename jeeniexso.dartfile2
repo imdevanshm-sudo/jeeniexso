@@ -1,0 +1,11 @@
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_animate: ^4.5.0
+  glassmorphism: ^3.0.0
+  google_fonts: ^6.1.0
+  vibration: ^1.9.0 # For custom haptic patterns
+  sensors_plus: ^5.0.0 # For 3D Tilt effects
+  camera: ^0.10.6
+  vector_math: ^2.1.4
+  audioplayers: ^6.0.0 # For sound effects
