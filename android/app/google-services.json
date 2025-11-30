@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "304099374260",
+    "project_id": "jeeniverse-faa8e",
+    "storage_bucket": "jeeniverse-faa8e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:304099374260:android:edebe447f125b5000e53e1",
+        "android_client_info": {
+          "package_name": "com.jeeniverse.jeeniexso"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJT5xxe4qLwzkwlkdeX-tJvi1i5SR3UnI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,16 +1,57 @@
+// Automatic FlutterFlow imports
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import 'index.dart'; // Imports other custom widgets
+import 'package:flutter/material.dart';
+// Begin custom widget code
+// DO NOT REMOVE OR MODIFY THE CODE ABOVE!
+
+import '/custom_code/widgets/index.dart';
+import '/flutter_flow/custom_functions.dart';
+
 import 'dart:async';
 import 'dart:math' as math;
 import 'dart:ui';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 import 'package:vibration/vibration.dart';
 import 'package:vector_math/vector_math_64.dart' as vector;
+import 'package:glassmorphism/glassmorphism.dart'; // Restored Glassmorphism
+
+/// --- MAIN WIDGET WRAPPER ---
+class JeeniExperience extends StatefulWidget {
+  const JeeniExperience({
+    Key? key,
+    this.width,
+    this.height,
+  }) : super(key: key);
+
+  final double? width;
+  final double? height;
+
+  @override
+  _JeeniExperienceState createState() => _JeeniExperienceState();
+}
+
+class _JeeniExperienceState extends State<JeeniExperience> {
+  @override
+  Widget build(BuildContext context) {
+    // Uses the exact dark theme properties from your file
+    return Theme(
+      data: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: const Color(0xFF0A0010),
+        textTheme: GoogleFonts.spaceGroteskTextTheme(
+          Theme.of(context).textTheme.apply(bodyColor: Colors.white),
+        ),
+      ),
+      child: const MainLayout(),
+    );
+  }
+}
 
 // --- 1. CONFIGURATION & DATA ---
-
 class RealityItem {
   final String id;
   final String title;
@@ -19,7 +60,7 @@ class RealityItem {
   final Color themeColor;
   final Color particleColor;
   final String description;
-  final String atmosphereType; // 'smoke', 'stars', 'glitch', 'light_shafts'
+  final String atmosphereType;
 
   const RealityItem({
     required this.id,
@@ -38,96 +79,75 @@ const List<RealityItem> realities = [
     id: 'dragon',
     title: "Dragon's Den",
     subtitle: "Ancient Era",
-    bgImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDso3MbbToJS5hclxf-6uzpc2MLOvsZBRBnKnnDCO6BVmKcF35rN_9vlw34B6cbAkurqDKrNMEhUEPFL0O8HMvcrybAg57NGHSbGG0RE47G6gnTcFizjZ1ie-WMW-_KrRcL2QksaU3pSWD7kflP1TdvN9yL9jio_e4sYfPQHKdG7xe3rDNQ2kBvip2xATno1SoUoYmRR_qyrQAZw6yZ5axF9X4jLikyWEPtT_zOR4zUMteNCOSpbUxnTQal89O0JcH8TcoDX_94N8Y3',
+    bgImage:
+        'https://images.unsplash.com/photo-1598556889429-05d4a1386ac9?q=80&w=1000',
     themeColor: Color(0xFFFF4E00),
     particleColor: Color(0xFFFFD700),
-    description: "A realm of fire and scales where ancient beasts guard treasures beyond imagination.",
+    description:
+        "A realm of fire and scales where ancient beasts guard treasures beyond imagination.",
     atmosphereType: 'smoke',
   ),
   RealityItem(
     id: 'cosmic',
     title: "Cosmic Voyage",
     subtitle: "Future Echo",
-    bgImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD7yCfvOKUjs1tELcFEmvvOquG-UVzM71K2avNZxWQpc3ZqX39BSiYLz-PCDvTS1-XrFGXyL_ZJzjpC2fqi2f8nrXdojj81JUcNMFr9GBvIVFQIYq7cMQajOntdGASxVO_2qWEc81aGChhU3PsfPwIfYiJo0D1J3mykyuTF5b_2gm5wT6m0tRWNYMSPjgWetEwrHyxKkp0Io_wKe7IV413Ck2pAkNWj3R4ZxYoyxgGGmI39F8JgqYXmlvcwtk7W2JWEYSES95_BYCs6',
+    bgImage:
+        'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000',
     themeColor: Color(0xFF0070F3),
     particleColor: Color(0xFF50E3C2),
-    description: "Drifting through the stardust of a thousand dead suns, silence is your only companion.",
+    description:
+        "Drifting through the stardust of a thousand dead suns, silence is your only companion.",
     atmosphereType: 'stars',
   ),
   RealityItem(
     id: 'neon',
     title: "Cyber City",
     subtitle: "Digital Dream",
-    bgImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA4Id3GFAYel2iaVZrVODrSxHDW2qYlaMPyAS226hWpQWLOHZiNE7kDPswd2FSE7WeXYSeQ3LsbL84PeQ4n-uMiWXqslNRYLmor-yC_Mo5iGS5yckRimbcUIwJCswEs50kEK971X737BrMTlficXDbSIwi99tcBbiZhebtKmo6CbdnFhQ2BU7HJk8jv_cMBCSLF1kgIXpcTJxLwgvwaV4SyeZ2nzEwFJad-cy_kuHJ7lCl92r1qKCVKwtqYaZ-OwrPkF4sp3IpPQkM_',
+    bgImage:
+        'https://images.unsplash.com/photo-1565626424177-85b30248f72c?q=80&w=1000',
     themeColor: Color(0xFFBD00FF),
     particleColor: Color(0xFFFF00FF),
-    description: "Neon lights reflect on wet pavement as the pulse of the city synchronizes with your heartbeat.",
+    description:
+        "Neon lights reflect on wet pavement as the pulse of the city synchronizes with your heartbeat.",
     atmosphereType: 'glitch',
   ),
   RealityItem(
     id: 'forest',
     title: "Spirit Woods",
     subtitle: "Nature's Whisper",
-    bgImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBWzf34Ia_sZeP_wAcehk5OtoRrwRg0w569_BrZMa9Xh4-DvvtCPsNAS-oLpPGZHiM-xgMtoQWatsS49NVqMRqrJ3bKyIfdjmKeH86mCW7dGpbWkgwQMe2RO9VZ1WLhos1d-CoABhbSC45Bkyp6JxUT1NevSllX78WwrWZcrdWh0gLItEZdC4-dAUaLKcAXdumjvvgNW2fdACggf7TAGCG2ZaYOp5fTNyLL1vhpuEZJaAXRsp7GLa_NWRqP9ullccc2QLPxQrNlOGSQ',
+    bgImage:
+        'https://images.unsplash.com/photo-1448375240586-dfd8f3793371?q=80&w=1000',
     themeColor: Color(0xFF4ADE80),
     particleColor: Color(0xFF10B981),
-    description: "Ancient trees guard secrets whispered by the wind, waiting for a soul quiet enough to listen.",
+    description:
+        "Ancient trees guard secrets whispered by the wind, waiting for a soul quiet enough to listen.",
     atmosphereType: 'light_shafts',
   ),
 ];
 
-// --- 2. NERVOUS SYSTEM (HAPTICS & AUDIO) ---
-
+// --- 2. NERVOUS SYSTEM (Haptics) ---
 class NervousSystem {
   static void triggerHaptic(String type) async {
-    if (await Vibration.hasVibrator() ?? false) {
-      if (type == 'light') Vibration.vibrate(duration: 5);
-      if (type == 'heavy') Vibration.vibrate(duration: 25);
-      if (type == 'success') Vibration.vibrate(pattern: [0, 10, 50, 20]);
-    } else {
+    // Attempts to use device vibration, falls back safely if unavailable
+    try {
+      if (await Vibration.hasVibrator() ?? false) {
+        if (type == 'light') Vibration.vibrate(duration: 5);
+        if (type == 'heavy') Vibration.vibrate(duration: 25);
+        if (type == 'success') Vibration.vibrate(pattern: [0, 10, 50, 20]);
+      } else {
+        HapticFeedback.lightImpact();
+      }
+    } catch (e) {
       HapticFeedback.lightImpact();
     }
   }
 
-  // Placeholder for sound - assumes audio assets exist or just skips
   static void playSound(String type) {
-    // In a real implementation, use AudioPlayer here.
-    // print("Playing sound: $type");
+    // Sound placeholder
   }
 }
 
-// --- 3. MAIN APP ---
-
-void main() {
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent,
-    statusBarIconBrightness: Brightness.light,
-    systemNavigationBarColor: Color(0xFF0A0010),
-  ));
-  runApp(const JeeniApp());
-}
-
-class JeeniApp extends StatelessWidget {
-  const JeeniApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Jeeni Portal',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: const Color(0xFF0A0010),
-        textTheme: GoogleFonts.spaceGroteskTextTheme(
-          Theme.of(context).textTheme.apply(bodyColor: Colors.white),
-        ),
-      ),
-      home: const MainLayout(),
-    );
-  }
-}
-
-// --- 4. MAIN LAYOUT ORCHESTRATOR ---
-
+// --- 3. MAIN LAYOUT ORCHESTRATOR ---
 class MainLayout extends StatefulWidget {
   const MainLayout({super.key});
 
@@ -136,7 +156,7 @@ class MainLayout extends StatefulWidget {
 }
 
 class _MainLayoutState extends State<MainLayout> {
-  int _currentIndex = 0; // 0: Portal, 1: Scanner, 2: Vault
+  int _currentIndex = 0;
   bool _isTransitioning = false;
   String _selectedRealityId = 'dragon';
   bool _introComplete = false;
@@ -151,10 +171,10 @@ class _MainLayoutState extends State<MainLayout> {
 
   void _switchMode(int index) {
     if (_currentIndex == index) return;
-    
+
     setState(() => _isTransitioning = true);
     NervousSystem.playSound('whoosh');
-    
+
     Future.delayed(const Duration(milliseconds: 500), () {
       setState(() {
         _currentIndex = index;
@@ -167,14 +187,15 @@ class _MainLayoutState extends State<MainLayout> {
     setState(() {
       _selectedRealityId = id;
       _currentReality = realities.firstWhere((r) => r.id == id);
-      _currentIndex = 0; // Return to portal
+      _currentIndex = 0;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     if (!_introComplete) {
-      return CinematicIntro(onComplete: () => setState(() => _introComplete = true));
+      return CinematicIntro(
+          onComplete: () => setState(() => _introComplete = true));
     }
 
     return Scaffold(
@@ -182,10 +203,8 @@ class _MainLayoutState extends State<MainLayout> {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          // Global Background (Deep Void)
           const _GlobalBackground(),
 
-          // Dynamic Atmosphere Layer
           AnimatedSwitcher(
             duration: const Duration(milliseconds: 1000),
             child: KeyedSubtree(
@@ -197,9 +216,7 @@ class _MainLayoutState extends State<MainLayout> {
             ),
           ),
 
-          // --- SCREENS ---
-          
-          // 1. Portal Screen (Gateway)
+          // Portal
           IgnorePointer(
             ignoring: _currentIndex != 0 || _isTransitioning,
             child: AnimatedOpacity(
@@ -207,18 +224,18 @@ class _MainLayoutState extends State<MainLayout> {
               opacity: _currentIndex == 0 && !_isTransitioning ? 1.0 : 0.0,
               child: PortalView(
                 reality: _currentReality,
-                onWarp: () => Navigator.of(context).push(
-                   PageRouteBuilder(
-                     pageBuilder: (_,__,___) => ImmersivePlayer(reality: _currentReality),
-                     transitionDuration: const Duration(milliseconds: 800),
-                     transitionsBuilder: (_, a, __, c) => FadeTransition(opacity: a, child: c),
-                   )
-                ),
+                onWarp: () => Navigator.of(context).push(PageRouteBuilder(
+                  pageBuilder: (_, __, ___) =>
+                      ImmersivePlayer(reality: _currentReality),
+                  transitionDuration: const Duration(milliseconds: 800),
+                  transitionsBuilder: (_, a, __, c) =>
+                      FadeTransition(opacity: a, child: c),
+                )),
               ),
             ),
           ),
 
-          // 2. Scanner Screen (The Eye)
+          // Scanner
           IgnorePointer(
             ignoring: _currentIndex != 1 || _isTransitioning,
             child: AnimatedOpacity(
@@ -228,19 +245,17 @@ class _MainLayoutState extends State<MainLayout> {
             ),
           ),
 
-          // 3. Vault Screen (DNA Helix)
+          // Vault
           IgnorePointer(
             ignoring: _currentIndex != 2 || _isTransitioning,
             child: AnimatedOpacity(
               duration: const Duration(milliseconds: 500),
               opacity: _currentIndex == 2 && !_isTransitioning ? 1.0 : 0.0,
-              child: VaultView(
-                onSelectReality: _selectReality,
-              ),
+              child: VaultView(onSelectReality: _selectReality),
             ),
           ),
 
-          // --- ORBITAL HUD (Bottom Nav) ---
+          // HUD
           Positioned(
             bottom: 0,
             left: 0,
@@ -256,8 +271,7 @@ class _MainLayoutState extends State<MainLayout> {
   }
 }
 
-// --- 5. PORTAL VIEW (CINEMATIC CARD) ---
-
+// --- 4. PORTAL VIEW (WITH SENSORS) ---
 class PortalView extends StatefulWidget {
   final RealityItem reality;
   final VoidCallback onWarp;
@@ -269,7 +283,6 @@ class PortalView extends StatefulWidget {
 }
 
 class _PortalViewState extends State<PortalView> with TickerProviderStateMixin {
-  // Tilt State
   double tiltX = 0;
   double tiltY = 0;
   StreamSubscription? _gyroSubscription;
@@ -277,13 +290,19 @@ class _PortalViewState extends State<PortalView> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    // Simple gyro listener for 3D tilt
-    _gyroSubscription = gyroscopeEvents.listen((GyroscopeEvent event) {
-      setState(() {
-        tiltX = (tiltX + event.y * 0.5).clamp(-0.2, 0.2);
-        tiltY = (tiltY + event.x * 0.5).clamp(-0.2, 0.2);
+    // Re-enabled Gyroscope for that real 3D feel
+    try {
+      _gyroSubscription = gyroscopeEvents.listen((GyroscopeEvent event) {
+        if (mounted) {
+          setState(() {
+            tiltX = (tiltX + event.y * 0.5).clamp(-0.2, 0.2);
+            tiltY = (tiltY + event.x * 0.5).clamp(-0.2, 0.2);
+          });
+        }
       });
-    });
+    } catch (e) {
+      print("Gyroscope not available");
+    }
   }
 
   @override
@@ -302,17 +321,17 @@ class _PortalViewState extends State<PortalView> with TickerProviderStateMixin {
         },
         child: Transform(
           transform: Matrix4.identity()
-            ..setEntry(3, 2, 0.001) // Perspective
+            ..setEntry(3, 2, 0.001)
             ..rotateX(tiltY)
             ..rotateY(tiltX),
           alignment: Alignment.center,
           child: SizedBox(
-            width: MediaQuery.of(context).size.width * 0.75,
-            height: MediaQuery.of(context).size.width * 0.75 * (5/4), // 4:5 Aspect
+            width: MediaQuery.of(context).size.width * 0.8,
+            height: MediaQuery.of(context).size.width * 0.8 * (5 / 4),
             child: Stack(
               clipBehavior: Clip.none,
               children: [
-                // Glow Underlay
+                // Glow
                 Positioned.fill(
                   child: Container(
                     decoration: BoxDecoration(
@@ -326,47 +345,32 @@ class _PortalViewState extends State<PortalView> with TickerProviderStateMixin {
                         )
                       ],
                     ),
-                  ).animate(onPlay: (c) => c.repeat(reverse: true))
-                   .scale(begin: const Offset(0.9, 0.9), end: const Offset(1.1, 1.1), duration: 4.seconds),
+                  ).animate(onPlay: (c) => c.repeat(reverse: true)).scale(
+                      begin: const Offset(0.9, 0.9),
+                      end: const Offset(1.1, 1.1),
+                      duration: 4.seconds),
                 ),
 
-                // Liquid Border Simulation (Using Layers)
-                Positioned(
-                  top: -20, bottom: -20, left: -20, right: -20,
-                  child: Container(
-                    decoration: BoxDecoration(
-                       border: Border.all(color: widget.reality.themeColor.withOpacity(0.3), width: 2),
-                       borderRadius: BorderRadius.circular(50),
-                    ),
-                  ).animate(onPlay: (c) => c.repeat(reverse: true))
-                   .custom(
-                     duration: 6.seconds,
-                     builder: (ctx, val, child) => Transform.scale(scale: 1.0 + (val * 0.05), child: child),
-                   ),
-                ),
-
-                // Main Card Content (The Wormhole)
+                // Card Content with Glassmorphism Border
                 ClipRRect(
                   borderRadius: BorderRadius.circular(30),
                   child: Stack(
                     fit: StackFit.expand,
                     children: [
-                      // Deep Space BG
                       Image.network(
-                        widget.reality.bgImage, 
+                        widget.reality.bgImage,
                         fit: BoxFit.cover,
-                        color: Colors.black.withOpacity(0.6),
+                        color: Colors.black.withOpacity(0.4),
                         colorBlendMode: BlendMode.darken,
                       ),
-                      
-                      // Wormhole Vortex (Simulated with Gradients)
                       const WormholeVortex(),
-                      
-                      // Theme Color Overlay
                       Container(
                         decoration: BoxDecoration(
                           gradient: RadialGradient(
-                            colors: [Colors.transparent, widget.reality.themeColor.withOpacity(0.4)],
+                            colors: [
+                              Colors.transparent,
+                              widget.reality.themeColor.withOpacity(0.4)
+                            ],
                             stops: const [0.4, 1.0],
                           ),
                         ),
@@ -374,10 +378,9 @@ class _PortalViewState extends State<PortalView> with TickerProviderStateMixin {
                     ],
                   ),
                 ),
-                
-                // Magical Particles Emitter (Foreground)
                 Positioned.fill(
-                  child: PortalHoverParticles(color: widget.reality.particleColor),
+                  child:
+                      PortalHoverParticles(color: widget.reality.particleColor),
                 ),
               ],
             ),
@@ -396,27 +399,32 @@ class WormholeVortex extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        // Layer 1: Spinning Conic
         _buildSpinningLayer(Colors.purpleAccent.withOpacity(0.2), 20),
-        // Layer 2: Counter-Spinning
-        _buildSpinningLayer(Colors.cyanAccent.withOpacity(0.2), 15, reverse: true),
-        // Core
+        _buildSpinningLayer(Colors.cyanAccent.withOpacity(0.2), 15,
+            reverse: true),
         Container(
-          width: 50, height: 50,
+          width: 50,
+          height: 50,
           decoration: BoxDecoration(
             color: Colors.white,
             shape: BoxShape.circle,
             boxShadow: [
-              BoxShadow(color: Colors.white.withOpacity(0.8), blurRadius: 20, spreadRadius: 10),
+              BoxShadow(
+                  color: Colors.white.withOpacity(0.8),
+                  blurRadius: 20,
+                  spreadRadius: 10)
             ],
           ),
-        ).animate(onPlay: (c) => c.repeat(reverse: true))
-         .scale(begin: const Offset(0.8, 0.8), end: const Offset(1.2, 1.2), duration: 2.seconds),
+        ).animate(onPlay: (c) => c.repeat(reverse: true)).scale(
+            begin: const Offset(0.8, 0.8),
+            end: const Offset(1.2, 1.2),
+            duration: 2.seconds),
       ],
     );
   }
 
-  Widget _buildSpinningLayer(Color color, int durationSec, {bool reverse = false}) {
+  Widget _buildSpinningLayer(Color color, int durationSec,
+      {bool reverse = false}) {
     return Container(
       width: double.infinity,
       height: double.infinity,
@@ -426,13 +434,14 @@ class WormholeVortex extends StatelessWidget {
           stops: const [0.0, 0.5, 0.7, 1.0],
         ),
       ),
-    ).animate(onPlay: (c) => c.repeat())
-     .rotate(duration: Duration(seconds: durationSec), begin: 0, end: reverse ? -1 : 1);
+    ).animate(onPlay: (c) => c.repeat()).rotate(
+        duration: Duration(seconds: durationSec),
+        begin: 0,
+        end: reverse ? -1 : 1);
   }
 }
 
-// --- 6. SCANNER VIEW (Minimalist) ---
-
+// --- 5. SCANNER VIEW ---
 class ScannerView extends StatelessWidget {
   const ScannerView({super.key});
 
@@ -440,47 +449,50 @@ class ScannerView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // Raw Camera Feed (Placeholder Image for Demo)
         Positioned.fill(
           child: Image.network(
-            'https://images.unsplash.com/photo-1518544806308-c8f325cc77cc?q=80&w=1000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1518544806308-c8f325cc77cc?q=80&w=1000',
             fit: BoxFit.cover,
-            color: Colors.white.withOpacity(0.9), // Slightly boost brightness/contrast logic
+            color: Colors.white.withOpacity(0.9),
             colorBlendMode: BlendMode.modulate,
           ),
         ),
-        
-        // Minimalist Center Reticle
         Center(
           child: Container(
-            width: 100, height: 100,
+            width: 100,
+            height: 100,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              border: Border.all(color: Colors.white.withOpacity(0.3), width: 1),
+              border:
+                  Border.all(color: Colors.white.withOpacity(0.3), width: 1),
             ),
             child: Center(
               child: Container(
-                width: 6, height: 6,
+                width: 6,
+                height: 6,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   shape: BoxShape.circle,
-                  boxShadow: [BoxShadow(color: Colors.white.withOpacity(0.8), blurRadius: 8)],
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.white.withOpacity(0.8), blurRadius: 8)
+                  ],
                 ),
               ),
             ),
-          ).animate(onPlay: (c) => c.repeat(reverse: true))
-           .scale(begin: const Offset(0.95, 0.95), end: const Offset(1.05, 1.05), duration: 2.seconds),
+          ).animate(onPlay: (c) => c.repeat(reverse: true)).scale(
+              begin: const Offset(0.95, 0.95),
+              end: const Offset(1.05, 1.05),
+              duration: 2.seconds),
         ),
       ],
     );
   }
 }
 
-// --- 7. VAULT VIEW (DNA Helix Layout) ---
-
+// --- 6. VAULT VIEW ---
 class VaultView extends StatefulWidget {
   final Function(String) onSelectReality;
-
   const VaultView({super.key, required this.onSelectReality});
 
   @override
@@ -488,21 +500,17 @@ class VaultView extends StatefulWidget {
 }
 
 class _VaultViewState extends State<VaultView> {
-  final ScrollController _scrollController = ScrollController();
-
-  // Generate extended list for the strand
   final List<RealityItem> _vaultItems = [
     ...realities,
     ...realities,
     ...realities,
     ...realities,
-  ]; // 16 items
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // Background Gradient
         Positioned.fill(
           child: Container(
             decoration: const BoxDecoration(
@@ -515,10 +523,10 @@ class _VaultViewState extends State<VaultView> {
             ),
           ),
         ),
-
-        // Sticky Header with Blur
         Positioned(
-          top: 0, left: 0, right: 0,
+          top: 0,
+          left: 0,
+          right: 0,
           child: ClipRect(
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
@@ -529,44 +537,34 @@ class _VaultViewState extends State<VaultView> {
                 child: Text(
                   "MEMORY HELIX",
                   style: GoogleFonts.cinzel(
-                    fontSize: 24,
-                    color: Colors.white,
-                    letterSpacing: 4,
-                    shadows: [Shadow(color: Colors.purple.withOpacity(0.5), blurRadius: 20)],
-                  ),
+                      fontSize: 24, color: Colors.white, letterSpacing: 4),
                 ),
               ),
             ),
           ),
         ),
-
-        // DNA Content
         Positioned.fill(
-          top: 120, // push down below header
+          top: 120,
           child: SingleChildScrollView(
-            controller: _scrollController,
             padding: const EdgeInsets.only(bottom: 150),
             child: SizedBox(
-              height: _vaultItems.length * 120.0 + 200, // Total height estimate
+              height: _vaultItems.length * 120.0 + 200,
               child: Stack(
                 clipBehavior: Clip.none,
                 children: List.generate(_vaultItems.length, (index) {
                   final item = _vaultItems[index];
-                  // DNA Math
                   final double yPos = index * 120.0;
                   final double angle = index * 0.5;
-                  // Two strands: Even indices Strand A, Odd indices Strand B (shifted 180 deg)
-                  final double phase = (index % 2 == 0) ? 0 : math.pi; 
-                  final double xOffset = math.sin(angle + phase) * 100.0; // 100px amplitude
-                  
-                  // 3D Depth Simulation
-                  final double depth = math.cos(angle + phase); // -1 to 1
-                  final double scale = 0.7 + ((depth + 1) / 2) * 0.4; // 0.7 to 1.1
-                  final double opacity = 0.4 + ((depth + 1) / 2) * 0.6; // 0.4 to 1.0
+                  final double phase = (index % 2 == 0) ? 0 : math.pi;
+                  final double xOffset = math.sin(angle + phase) * 100.0;
+                  final double depth = math.cos(angle + phase);
+                  final double scale = 0.7 + ((depth + 1) / 2) * 0.4;
+                  final double opacity = 0.4 + ((depth + 1) / 2) * 0.6;
 
                   return Positioned(
                     top: yPos,
-                    left: 0, right: 0,
+                    left: 0,
+                    right: 0,
                     child: Align(
                       alignment: Alignment.center,
                       child: Transform.translate(
@@ -597,69 +595,61 @@ class _VaultViewState extends State<VaultView> {
   }
 
   Widget _buildCrystalNode(RealityItem item) {
-    return Container(
+    // Glassmorphism Crystal
+    return GlassmorphicContainer(
       width: 140,
       height: 140,
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.05),
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(60),
-          topRight: Radius.circular(40),
-          bottomLeft: Radius.circular(40),
-          bottomRight: Radius.circular(60),
-        ),
-        border: Border.all(color: Colors.white.withOpacity(0.2), width: 1),
-        boxShadow: [
-          BoxShadow(
-            color: item.themeColor.withOpacity(0.3),
-            blurRadius: 20,
-            spreadRadius: -5,
-          )
-        ],
-        image: DecorationImage(
-          image: NetworkImage(item.bgImage),
-          fit: BoxFit.cover,
-          opacity: 0.8,
-        ),
+      borderRadius: 40,
+      blur: 20,
+      alignment: Alignment.center,
+      border: 2,
+      linearGradient: LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [Colors.white.withOpacity(0.1), Colors.white.withOpacity(0.05)],
       ),
-      child: Center(
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-          decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.6),
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Text(
-            item.title.toUpperCase(),
-            style: GoogleFonts.rajdhani(
-              fontSize: 10,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
+      borderGradient: LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [Colors.white.withOpacity(0.5), Colors.white.withOpacity(0.1)],
+      ),
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          Image.network(item.bgImage,
+              fit: BoxFit.cover, opacity: const AlwaysStoppedAnimation(0.7)),
+          Center(
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.6),
+                  borderRadius: BorderRadius.circular(20)),
+              child: Text(item.title.toUpperCase(),
+                  style: GoogleFonts.rajdhani(
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white)),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
 }
 
-// --- 8. ORBITAL HUD ---
-
+// --- 7. ORBITAL HUD ---
 class OrbitalHud extends StatelessWidget {
   final int selectedIndex;
   final Function(int) onItemSelected;
 
-  const OrbitalHud({
-    super.key,
-    required this.selectedIndex,
-    required this.onItemSelected,
-  });
+  const OrbitalHud(
+      {super.key, required this.selectedIndex, required this.onItemSelected});
 
   @override
   Widget build(BuildContext context) {
     final modes = [
       {'icon': Icons.auto_awesome_mosaic, 'label': 'PORTAL'},
-      {'icon': Icons.radio_button_checked, 'label': 'SCANNER'}, // Capture button style
+      {'icon': Icons.radio_button_checked, 'label': 'SCANNER'},
       {'icon': Icons.memory, 'label': 'VAULT'},
     ];
 
@@ -673,7 +663,6 @@ class OrbitalHud extends StatelessWidget {
         children: List.generate(modes.length, (index) {
           final isSelected = selectedIndex == index;
           final mode = modes[index];
-          // Arc layout offset
           final double yOffset = (index == 1) ? 0.0 : -20.0;
 
           return GestureDetector(
@@ -684,45 +673,50 @@ class OrbitalHud extends StatelessWidget {
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 300),
               curve: Curves.easeOutBack,
-              transform: Matrix4.identity()..translate(0.0, yOffset)..scale(isSelected ? 1.1 : 0.9),
+              transform: Matrix4.identity()
+                ..translate(0.0, yOffset)
+                ..scale(isSelected ? 1.1 : 0.9),
               margin: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  // The Lens Button
                   Container(
-                    width: 60, height: 60,
+                    width: 60,
+                    height: 60,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: isSelected ? Colors.white.withOpacity(0.1) : Colors.black.withOpacity(0.5),
+                      color: isSelected
+                          ? Colors.white.withOpacity(0.1)
+                          : Colors.black.withOpacity(0.5),
                       border: Border.all(
-                        color: isSelected ? Colors.white : Colors.white.withOpacity(0.2),
-                        width: isSelected ? 2 : 1,
-                      ),
-                      boxShadow: isSelected 
-                        ? [BoxShadow(color: Colors.white.withOpacity(0.4), blurRadius: 20)] 
-                        : [],
+                          color: isSelected
+                              ? Colors.white
+                              : Colors.white.withOpacity(0.2),
+                          width: isSelected ? 2 : 1),
+                      boxShadow: isSelected
+                          ? [
+                              BoxShadow(
+                                  color: Colors.white.withOpacity(0.4),
+                                  blurRadius: 20)
+                            ]
+                          : [],
                     ),
-                    child: Icon(
-                      mode['icon'] as IconData,
-                      color: isSelected ? Colors.white : Colors.white.withOpacity(0.4),
-                      size: 28,
-                    ),
+                    child: Icon(mode['icon'] as IconData,
+                        color: isSelected
+                            ? Colors.white
+                            : Colors.white.withOpacity(0.4),
+                        size: 28),
                   ),
                   const SizedBox(height: 8),
-                  // Label
                   AnimatedOpacity(
                     duration: const Duration(milliseconds: 300),
                     opacity: isSelected ? 1.0 : 0.0,
-                    child: Text(
-                      mode['label'] as String,
-                      style: GoogleFonts.rajdhani(
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 2,
-                        color: Colors.white,
-                      ),
-                    ),
+                    child: Text(mode['label'] as String,
+                        style: GoogleFonts.rajdhani(
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 2,
+                            color: Colors.white)),
                   ),
                 ],
               ),
@@ -734,8 +728,7 @@ class OrbitalHud extends StatelessWidget {
   }
 }
 
-// --- 9. IMMERSIVE PLAYER (Full Screen) ---
-
+// --- 8. IMMERSIVE PLAYER ---
 class ImmersivePlayer extends StatefulWidget {
   final RealityItem reality;
   const ImmersivePlayer({super.key, required this.reality});
@@ -776,45 +769,39 @@ class _ImmersivePlayerState extends State<ImmersivePlayer> {
         child: Stack(
           fit: StackFit.expand,
           children: [
-            // Content
-            Image.network(
-              widget.reality.bgImage,
-              fit: BoxFit.cover,
-            ).animate(onPlay: (c) => c.repeat(reverse: true))
-             .scale(begin: const Offset(1, 1), end: const Offset(1.1, 1.1), duration: 20.seconds),
-
-            // Vignette (Exit Feedback)
+            Image.network(widget.reality.bgImage, fit: BoxFit.cover)
+                .animate(onPlay: (c) => c.repeat(reverse: true))
+                .scale(
+                    begin: const Offset(1, 1),
+                    end: const Offset(1.1, 1.1),
+                    duration: 20.seconds),
             if (_exitProgress > 0)
               Container(
-                decoration: BoxDecoration(
-                  gradient: RadialGradient(
-                    colors: [Colors.transparent, Colors.black.withOpacity(_exitProgress)],
-                    stops: [1.0 - _exitProgress, 1.0],
-                  ),
-                ),
-              ),
-
-            // Materializing Text
+                  decoration: BoxDecoration(
+                      gradient: RadialGradient(colors: [
+                Colors.transparent,
+                Colors.black.withOpacity(_exitProgress)
+              ], stops: [
+                1.0 - _exitProgress,
+                1.0
+              ]))),
             Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(
-                    widget.reality.title.toUpperCase(),
-                    style: GoogleFonts.cinzel(
-                      fontSize: 40,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ).animate().fadeIn(duration: 2.seconds).scale(),
+                  Text(widget.reality.title.toUpperCase(),
+                          style: GoogleFonts.cinzel(
+                              fontSize: 40,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold))
+                      .animate()
+                      .fadeIn(duration: 2.seconds)
+                      .scale(),
                   const SizedBox(height: 20),
-                  Text(
-                    "HOLD TO WAKE",
-                    style: GoogleFonts.rajdhani(
-                      color: Colors.white.withOpacity(0.5),
-                      letterSpacing: 4,
-                    ),
-                  ),
+                  Text("HOLD TO WAKE",
+                      style: GoogleFonts.rajdhani(
+                          color: Colors.white.withOpacity(0.5),
+                          letterSpacing: 4)),
                 ],
               ),
             ),
@@ -825,66 +812,63 @@ class _ImmersivePlayerState extends State<ImmersivePlayer> {
   }
 }
 
-// --- 10. HELPER WIDGETS ---
-
+// --- 9. HELPERS ---
 class _GlobalBackground extends StatelessWidget {
   const _GlobalBackground({super.key});
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [Color(0xFF000000), Color(0xFF0A0010), Color(0xFF2D004F)],
-        ),
-      ),
-    );
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+          Color(0xFF000000),
+          Color(0xFF0A0010),
+          Color(0xFF2D004F)
+        ])));
   }
 }
 
 class DynamicAtmosphere extends StatelessWidget {
   final String type;
   final Color color;
-
   const DynamicAtmosphere({super.key, required this.type, required this.color});
-
   @override
   Widget build(BuildContext context) {
-    // Simplified atmosphere rendering using container gradients/particles
-    // In a full app, use CustomPainter for specific smoke/glitch effects
     return Container(
-      decoration: BoxDecoration(
-        gradient: RadialGradient(
-          center: Alignment.center,
-          radius: 1.5,
-          colors: [color.withOpacity(0.05), Colors.transparent],
-        ),
-      ),
-    ).animate(onPlay: (c) => c.repeat(reverse: true))
-     .scale(begin: const Offset(1, 1), end: const Offset(1.2, 1.2), duration: 10.seconds);
+            decoration: BoxDecoration(
+                gradient: RadialGradient(
+                    center: Alignment.center,
+                    radius: 1.5,
+                    colors: [color.withOpacity(0.05), Colors.transparent])))
+        .animate(onPlay: (c) => c.repeat(reverse: true))
+        .scale(
+            begin: const Offset(1, 1),
+            end: const Offset(1.2, 1.2),
+            duration: 10.seconds);
   }
 }
 
 class PortalHoverParticles extends StatelessWidget {
   final Color color;
   const PortalHoverParticles({super.key, required this.color});
-
   @override
   Widget build(BuildContext context) {
-    // Use Particles Flutter package here in real app
-    // Mocking a few particles
     return Stack(
       children: List.generate(10, (index) {
         final random = math.Random(index);
         return Align(
-          alignment: Alignment(random.nextDouble() * 2 - 1, random.nextDouble() * 2 - 1),
+          alignment: Alignment(
+              random.nextDouble() * 2 - 1, random.nextDouble() * 2 - 1),
           child: Container(
-            width: 4, height: 4,
-            decoration: BoxDecoration(color: color, shape: BoxShape.circle),
-          ).animate(onPlay: (c) => c.repeat())
-           .fade(duration: 2.seconds)
-           .moveY(begin: 0, end: -50, duration: 3.seconds),
+                  width: 4,
+                  height: 4,
+                  decoration:
+                      BoxDecoration(color: color, shape: BoxShape.circle))
+              .animate(onPlay: (c) => c.repeat())
+              .fade(duration: 2.seconds)
+              .moveY(begin: 0, end: -50, duration: 3.seconds),
         );
       }),
     );
@@ -894,7 +878,6 @@ class PortalHoverParticles extends StatelessWidget {
 class CinematicIntro extends StatefulWidget {
   final VoidCallback onComplete;
   const CinematicIntro({super.key, required this.onComplete});
-
   @override
   State<CinematicIntro> createState() => _CinematicIntroState();
 }
@@ -916,13 +899,19 @@ class _CinematicIntroState extends State<CinematicIntro> {
           children: [
             Container(width: 100, height: 2, color: Colors.cyan)
                 .animate()
-                .scaleX(begin: 0, end: 1, duration: 500.ms, curve: Curves.easeOut)
-                .then().fadeOut(),
+                .scaleX(
+                    begin: 0, end: 1, duration: 500.ms, curve: Curves.easeOut)
+                .then()
+                .fadeOut(),
             const SizedBox(height: 20),
             Icon(Icons.auto_awesome_mosaic, color: Colors.white, size: 60)
                 .animate(delay: 600.ms)
-                .scale(begin: const Offset(0, 0), end: const Offset(1, 1), curve: Curves.elasticOut)
-                .then().shake(),
+                .scale(
+                    begin: const Offset(0, 0),
+                    end: const Offset(1, 1),
+                    curve: Curves.elasticOut)
+                .then()
+                .shake(),
           ],
         ),
       ),
